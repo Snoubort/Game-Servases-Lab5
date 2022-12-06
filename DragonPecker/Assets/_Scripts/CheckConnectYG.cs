@@ -9,13 +9,17 @@ public class CheckConnectYG : MonoBehaviour
     private void OnEnable() => YandexGame.GetDataEvent += CheckSDK;
     private void OnDisable() => YandexGame.GetDataEvent -= CheckSDK;
     private TextMeshProUGUI scoreBest;
-    public GameObject AchivList;
+    public GameObject Achv0;
     // Start is called before the first frame update
     void Start(){   
+        Debug.Log(YandexGame.savesData.achiv0);
+        Debug.Log("Test");
         Debug.Log(YandexGame.SDKEnabled);
         if (YandexGame.SDKEnabled){
             CheckSDK();
         }
+        Debug.Log(YandexGame.savesData.achiv0);
+        Debug.Log("Test3");
     }
 
     // Update is called once per frame
@@ -35,13 +39,12 @@ public class CheckConnectYG : MonoBehaviour
         GameObject scoreBO = GameObject.Find("BestScore");
         scoreBest = scoreBO.GetComponent<TextMeshProUGUI>();
         scoreBest.text = "Best Score: " + YandexGame.savesData.bestScore.ToString();
-        if ((YandexGame.savesData.achivment)[0] == null){
+        Debug.Log(YandexGame.savesData.achiv0);
+        Debug.Log("Test2");
+        if(YandexGame.savesData.achiv0){
+            Achv0.SetActive(true);
+        }
+        
 
-        }
-        else{
-            foreach(string value in YandexGame.savesData.achivment){
-                AchivList.GetComponent<TextMeshProUGUI>().text = AchivList.GetComponent<TextMeshProUGUI>().text + value + "\n";
-            }
-        }
     }
 }

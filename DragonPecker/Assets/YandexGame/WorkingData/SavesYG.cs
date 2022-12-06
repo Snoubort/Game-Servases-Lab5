@@ -12,6 +12,6 @@ namespace YG
         // Ваши сохранения
         public int score;
         public int bestScore = 0;
-        public string[] achivment;
+        public bool achiv0 = false;
     }
 }
