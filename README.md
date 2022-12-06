@@ -25,17 +25,21 @@
 
 
         public class CheckConnectYG : MonoBehaviour
-            {
+        {
             private void OnEnable() => YandexGame.GetDataEvent += CheckSDK;
             private void OnDisable() => YandexGame.GetDataEvent -= CheckSDK;
             private TextMeshProUGUI scoreBest;
-            public GameObject AchivList;
+            public GameObject Achv0;
             // Start is called before the first frame update
             void Start(){   
+                Debug.Log(YandexGame.savesData.achiv0);
+                Debug.Log("Test");
                 Debug.Log(YandexGame.SDKEnabled);
                 if (YandexGame.SDKEnabled){
                     CheckSDK();
                 }
+                Debug.Log(YandexGame.savesData.achiv0);
+                Debug.Log("Test3");
             }
 
             // Update is called once per frame
@@ -55,16 +59,15 @@
                 GameObject scoreBO = GameObject.Find("BestScore");
                 scoreBest = scoreBO.GetComponent<TextMeshProUGUI>();
                 scoreBest.text = "Best Score: " + YandexGame.savesData.bestScore.ToString();
-                if ((YandexGame.savesData.achivment)[0] == null){
+                Debug.Log(YandexGame.savesData.achiv0);
+                Debug.Log("Test2");
+                if(YandexGame.savesData.achiv0){
+                    Achv0.SetActive(true);
+                }
 
-                }
-                else{
-                    foreach(string value in YandexGame.savesData.achivment){
-                        AchivList.GetComponent<TextMeshProUGUI>().text=AchivList.GetComponent<TextMeshProUGUI>                                      ().text+value+"\n";                                 
-                    }
-                }
+
             }
-    }
+        }
 
 
 
@@ -87,7 +90,7 @@
                 // Ваши сохранения
                 public int score;
                 public int bestScore = 0;
-                public string[] achivment;
+                public bool achiv0 = false;
             }
         }
 
@@ -142,9 +145,8 @@
                 if (shieldList.Count == 0){
                     GameObject scoreGO = GameObject.Find("Score");
                     scoreGT = scoreGO.GetComponent<TextMeshProUGUI>();
-                    string[] achivList;
-                    achivList = YandexGame.savesData.achivment;
-                    achivList[0] = "Береги щиты";
+                    bool[] achivList = new bool[10];
+                    achivList[0] = true;
                     UserSave(int.Parse(scoreGT.text), YandexGame.savesData.bestScore, achivList);
                     YandexGame.NewLeaderboardScores("TOPPlayerScore", int.Parse(scoreGT.text));
                     SceneManager.LoadScene("_0Scene");
@@ -159,21 +161,22 @@
                 playerName.text = YandexGame.playerName;
             }
 
-            public void UserSave(int currentScore, int currentBestScore, string[] currentAchiv){
+            public void UserSave(int currentScore, int currentBestScore, bool[] currentAchiv){
                 YandexGame.savesData.score = currentScore;
                 if(currentScore > currentBestScore){
                     YandexGame.savesData.bestScore = currentScore;
                 }
-                YandexGame.savesData.achivment = currentAchiv;
+                YandexGame.savesData.achiv0 = currentAchiv[0];
                 YandexGame.SaveProgress();
             }
+
         }
 
         
         
 - Добавляем лидерборд в игру, после чего добавляем его же в панеле разработчика(см скрипт DragonPicker)
 ![image](https://github.com/Snoubort/Game-services-lab4/blob/main/MatForReadMe/Music.PNG)
-- Добавляем систему ачивок, создав массив строк в сохраняемых переменных YG и сделав его перенос в игру в CheckConnectYG   
+- Добавляем систему ачивок, в виду того, что способ, предложенный в лекции выдаёт NullReferenceException при попытке получить неактивный элемент через find. А так же из-за наличия задания 3 было принято решение сделать сразу варинат с учётом номера 3. Для этого в файле сохранений YG была созданна переменная под первую ачивку. Такой способ задания ачивок удовлетворяет требованиям, поскольку в аркаде не предвидится большое колиечтсво ачивок. Однако при большом колличестве достижений это не решает проблемы масштабирования.   
 
 ## Задание 2
 ### Описать не менее трех дополнительных функций Яндекс SDK, которые могут быть интегрированы в игру.
