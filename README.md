@@ -20,6 +20,7 @@
 ### - 5 Практическая работа «Интеграция системы достижений в проект».
 Ход работы:
 - создаём на сцене объект YandexManager, затем на него вешаем новый скрипт CheckConnectYG.
+![image](https://github.com/Snoubort/Game-Servases-Lab5/blob/main/MatForReadMe/AutSys.PNG)
 - В скриптемы проверяем подключение SDK и в случае успеха - проверяем авторизацию
 
 
@@ -72,8 +73,8 @@
 
 
 
-- В скрипте от YG SavesYG создаём переменные для наших сохранений, после чего в DragonPicker создаём переменные и 2 метада, один из которых подгружает сохранения, а второй - наоборотсохраняет
-![image](https://github.com/Snoubort/Game-services-lab4/blob/main/MatForReadMe/PauseScene.PNG)
+- В скрипте от YG SavesYG создаём переменные для наших сохранений, после чего в DragonPicker создаём переменные и 2 метада, один из которых подгружает сохранения, а второй - наоборот сохраняет
+![image](https://github.com/Snoubort/Game-Servases-Lab5/blob/main/MatForReadMe/SavedDataMainMenu.PNG)
 
 
 
@@ -175,7 +176,7 @@
         
         
 - Добавляем лидерборд в игру, после чего добавляем его же в панеле разработчика(см скрипт DragonPicker)
-![image](https://github.com/Snoubort/Game-services-lab4/blob/main/MatForReadMe/Music.PNG)
+![image](https://github.com/Snoubort/Game-Servases-Lab5/blob/main/MatForReadMe/LiderbordScrin.PNG)
 - Добавляем систему ачивок, в виду того, что способ, предложенный в лекции выдаёт NullReferenceException при попытке получить неактивный элемент через find. А так же из-за наличия задания 3 было принято решение сделать сразу варинат с учётом номера 3. Для этого в файле сохранений YG была созданна переменная под первую ачивку. Такой способ задания ачивок удовлетворяет требованиям, поскольку в аркаде не предвидится большое колиечтсво ачивок. Однако при большом колличестве достижений это не решает проблемы масштабирования.   
 
 ## Задание 2
@@ -184,4 +185,4 @@
 ## Задание 3
 ### Доработать стилистическое оформление списка лидеров и системы достижений, реализованных в задании 1.
 - Смотри последний пункт задания 1
-![image](https://github.com/Snoubort/Game-services-lab4/blob/main/MatForReadMe/Music.PNG)
+![image](https://github.com/Snoubort/Game-Servases-Lab5/blob/main/MatForReadMe/AchivmentsMenu.PNG)
