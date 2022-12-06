@@ -24,7 +24,7 @@
 
 
 
-    public class CheckConnectYG : MonoBehaviour
+        public class CheckConnectYG : MonoBehaviour
             {
             private void OnEnable() => YandexGame.GetDataEvent += CheckSDK;
             private void OnDisable() => YandexGame.GetDataEvent -= CheckSDK;
@@ -60,7 +60,7 @@
                 }
                 else{
                     foreach(string value in YandexGame.savesData.achivment){
-                        AchivList.GetComponent<TextMeshProUGUI>().text=AchivList.GetComponent<TextMeshProUGUI>().text+value+"\n";
+                        AchivList.GetComponent<TextMeshProUGUI>().text=AchivList.GetComponent<TextMeshProUGUI>                                      ().text+value+"\n";                                 
                     }
                 }
             }
